@@ -1,4 +1,4 @@
-const createFilterMarkup = () => {
+const createFilterMarkup = (name, count) => {
   return `<input
       type="radio"
       id="filter__all"
@@ -7,12 +7,12 @@ const createFilterMarkup = () => {
       checked
     />
     <label for="filter__all" class="filter__label">
-      All <span class="filter__all-count">13</span></label
+      ${name} <span class="filter__all-count">${count}</span></label
     >`;
 };
 
 export const createFilterTemplate = () => {
-  const filterMarkup = createFilterMarkup();
+  const filterMarkup = createFilterMarkup(`overdue`, 13);
   return `<section class="main__filter filter container">
     ${filterMarkup}
     ${filterMarkup} 
