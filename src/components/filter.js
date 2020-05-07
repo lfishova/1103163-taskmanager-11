@@ -1,24 +1,26 @@
 const createFilterMarkup = (name, count) => {
   return `<input
       type="radio"
-      id="filter__all"
+      id="filter__${name}"
       class="filter__input visually-hidden"
       name="filter"
       checked
     />
-    <label for="filter__all" class="filter__label">
-      ${name} <span class="filter__all-count">${count}</span></label
+    <label for="filter__${name}" class="filter__label">
+      ${name} <span class="filter__${name}-count">${count}</span></label
     >`;
 };
 
 export const createFilterTemplate = () => {
-  const filterMarkup = createFilterMarkup(`overdue`, 13);
+  const filterMarkup = [
+    {name: `all`, count: 18},
+    {name: `overdue`, count: 18},
+    {name: `today`, count: 18},
+    {name: `favorites`, count: 18},
+    {name: `repeating`, count: 18},
+    {name: `archive`, count: 18},
+  ].map((it) => createFilterMarkup(it.name, it.count)).join(`\n`);
   return `<section class="main__filter filter container">
-    ${filterMarkup}
-    ${filterMarkup} 
-    ${filterMarkup}
-    ${filterMarkup}
-    ${filterMarkup}
     ${filterMarkup}
   </section>`;
 };
